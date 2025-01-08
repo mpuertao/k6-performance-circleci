@@ -8,8 +8,16 @@ import faker from "https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.
 
 export const options = {
   // A number specifying the number of VUs to run concurrently.
-  vus: 10,
-  duration: "5s",
+  stages:[
+    { duration: '5s', target: 5 },
+    { duration: '10s', target: 5 },
+    { duration: '10s', target: 15 },
+    { duration: '30s', target: 15 },
+    { duration: '10s', target: 20 },
+    { duration: '10s', target: 10 },
+    { duration: '30s', target: 10 },
+    { duration: '10s', target: 0 },
+  ],
   // scenarios: {
   //   getBookings: {
   //     executor: "shared-iterations",
@@ -36,14 +44,6 @@ export const options = {
   //     iterations: 10,
   //   },
   //}
-  // A string specifying the total duration of the test run.
-  // duration: '10s',
-
-  // stages: [
-  //{ duration: '3s', target: 5 },
-  //   { duration: '5s', target: 3 },
-  //   { duration: '2s', target: 0 },
-  // ],
 };
 
 
