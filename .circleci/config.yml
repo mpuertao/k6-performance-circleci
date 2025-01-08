@@ -6,7 +6,7 @@ orbs:
 workflows:
   load_test:
     jobs:
-      - grafana/k6:
+      - k6/run:
           script: k6 run script.js
 
       - store_artifacts:
