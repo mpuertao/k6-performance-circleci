@@ -2,12 +2,20 @@ version: 2.1
 
 orbs: 
   k6: grafana/k6@1.1.0
-
+jobs:
+  run_k6_test:
+    docker:
+      - image: loadimpact/k6
+    steps:
+      - checkout
+      - run:
+          name: Run k6 test
+          command: k6 run script.js
+      - store_artifacts:
+          path: summary.html
+      
 workflows:
+  version: 2
   load_test:
     jobs:
-      - k6/run:
-          script: k6 run script.js
-
-      - store_artifacts:
-          path: summary.html    
+      - run_k6_test
