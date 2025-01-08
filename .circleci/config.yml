@@ -1,0 +1,13 @@
+version: 2.1
+
+orbs: 
+  k6: grafana/k6@1.1.3
+
+workflows:
+  load_test:
+    jobs:
+      - grafana/k6:
+          script: k6 run script.js
+
+      - store_artifacts:
+          path: summary.html    
